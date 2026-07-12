@@ -185,6 +185,13 @@ CONCLUSIONS
 This project demonstrates an end-to-end computer vision pipeline for satellite
 land-use classification and temporal change detection.
 
+BONUS FEATURES COMPLETED
+------------------------
+  - Bonus A (GradCAM): Implemented in `scripts/bonus_a_gradcam.py` to generate interpretability heatmaps.
+  - Bonus B (Multi-threshold toggle): Implemented dynamic thresholds in the Streamlit dashboard sidebar.
+  - Bonus C (Embedding visualisation): Fully implemented using t-SNE projection in the results notebook.
+  - Bonus D (Imbalance experiment): Implemented via `scripts/bonus_d_imbalance.py` with weighted loss mitigation.
+
 Key results:
   - A two-phase transfer-learning strategy (freeze -> unfreeze last 2 blocks)
     achieves substantially higher macro-F1 than a scratch baseline CNN,
