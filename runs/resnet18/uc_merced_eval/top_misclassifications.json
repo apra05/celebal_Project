@@ -1,0 +1,32 @@
+[
+  {
+    "index": 0,
+    "true": "agricultural",
+    "predicted": "PermanentCrop",
+    "confidence": 0.7303179502487183
+  },
+  {
+    "index": 2,
+    "true": "agricultural",
+    "predicted": "PermanentCrop",
+    "confidence": 0.8868440985679626
+  },
+  {
+    "index": 4,
+    "true": "agricultural",
+    "predicted": "Residential",
+    "confidence": 0.9947473406791687
+  },
+  {
+    "index": 5,
+    "true": "agricultural",
+    "predicted": "HerbaceousVegetation",
+    "confidence": 0.9596440196037292
+  },
+  {
+    "index": 6,
+    "true": "agricultural",
+    "predicted": "HerbaceousVegetation",
+    "confidence": 0.5010867118835449
+  }
+]

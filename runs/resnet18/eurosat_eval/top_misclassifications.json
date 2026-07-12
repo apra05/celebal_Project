@@ -1,0 +1,32 @@
+[
+  {
+    "index": 6,
+    "true": "AnnualCrop",
+    "predicted": "PermanentCrop",
+    "confidence": 0.9392127990722656
+  },
+  {
+    "index": 27,
+    "true": "AnnualCrop",
+    "predicted": "Pasture",
+    "confidence": 0.6413763165473938
+  },
+  {
+    "index": 61,
+    "true": "AnnualCrop",
+    "predicted": "Highway",
+    "confidence": 0.840142011642456
+  },
+  {
+    "index": 80,
+    "true": "AnnualCrop",
+    "predicted": "Pasture",
+    "confidence": 0.6060076355934143
+  },
+  {
+    "index": 121,
+    "true": "AnnualCrop",
+    "predicted": "Highway",
+    "confidence": 0.5338613986968994
+  }
+]

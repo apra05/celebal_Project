@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Pytest / Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local data (crucial to ignore to avoid uploading GBs of images)
+data/
+
+# IDE / System files
+.DS_Store
+.vscode/
+.idea/
+
+# Egg info
+*.egg-info/
+dist/
+build/

@@ -1,0 +1,32 @@
+[
+  {
+    "path": "data/eurosat/Pasture/Pasture_1614.jpg",
+    "true": "Pasture",
+    "predicted": "HerbaceousVegetation",
+    "confidence": 0.9999117851257324
+  },
+  {
+    "path": "data/eurosat/River/River_1032.jpg",
+    "true": "River",
+    "predicted": "Highway",
+    "confidence": 0.9999094009399414
+  },
+  {
+    "path": "data/eurosat/PermanentCrop/PermanentCrop_2066.jpg",
+    "true": "PermanentCrop",
+    "predicted": "HerbaceousVegetation",
+    "confidence": 0.9985513091087341
+  },
+  {
+    "path": "data/eurosat/Highway/Highway_582.jpg",
+    "true": "Highway",
+    "predicted": "River",
+    "confidence": 0.9985185265541077
+  },
+  {
+    "path": "data/eurosat/Highway/Highway_1383.jpg",
+    "true": "Highway",
+    "predicted": "HerbaceousVegetation",
+    "confidence": 0.9951887130737305
+  }
+]
