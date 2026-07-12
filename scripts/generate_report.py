@@ -250,102 +250,55 @@ def main() -> None:
         # Page 1 — Cover
         _cover_page(pdf, runs_dir)
 
-        # Page 2 — Data pipeline
-        class_dist_img = runs_dir / "data_profile" / "class_distribution.png"
-        _image_page(
-            pdf,
-            "Section 1 — Dataset & Data Pipeline",
-            [class_dist_img],
-            ["EuroSAT class distribution (block-split)"],
-        )
-
-        # Page 3 — Training loss curves (fine-tuned)
+        # Page 2 — Training loss curves (fine-tuned)
         history = _load_json(runs_dir / "resnet18" / "history.json")
         if history:
             _loss_curves_page(pdf, history)
-        else:
-            print("  [skip] resnet18/history.json not found")
 
-        # Page 4 — EuroSAT classification report
-        eurosat_report = _load_json(runs_dir / "resnet18" / "eurosat_eval" / "classification_report.csv")
-        # CSV -> try JSON from spatial leakage instead
+        # Page 3 — EuroSAT classification report
         block_report = _load_json(runs_dir / "spatial_leakage" / "block_report.json")
         if block_report:
             _metrics_table_page(pdf, block_report, "Section 3 — EuroSAT Evaluation (Block Split)")
-        else:
-            print("  [skip] block_report.json not found — run spatial_leakage_experiment.py first")
 
-        # Page 5 — Confusion matrix (EuroSAT)
-        cm_img = runs_dir / "resnet18" / "eurosat_eval" / "confusion_matrix.png"
-        _image_page(
-            pdf,
-            "Section 4a — Confusion Matrix (EuroSAT)",
-            [cm_img],
-            ["ResNet-18 fine-tuned — EuroSAT test split"],
-        )
-
-        # Page 5b — Confusion matrix (UC Merced)
-        cm_ucm = runs_dir / "resnet18" / "uc_merced_eval" / "confusion_matrix.png"
-        _image_page(
-            pdf,
-            "Section 4b — Confusion Matrix (UC Merced Holdout)",
-            [cm_ucm],
-            ["ResNet-18 fine-tuned — UC Merced (21 classes)"],
-        )
-
-        # Page 6 — Change detection ROC curve
-        roc_img = runs_dir / "change_detection" / "roc_curve.png"
-        change_summary = _load_json(runs_dir / "change_detection" / "summary.json")
-        roc_caption = "ROC curve — embedding cosine similarity change detector"
-        if change_summary:
-            roc_caption += (
-                f"\nThreshold={change_summary.get('selected_similarity_threshold', '?'):.3f}  "
-                f"Pair count={change_summary.get('pair_count', '?')}"
-            )
-        _image_page(pdf, "Section 5 — Temporal Change Detector", [roc_img], [roc_caption])
-
-        # Page 7 — Heatmap triptychs
-        heatmap_dir = runs_dir / "change_detection" / "heatmaps"
-        heatmap_files = sorted(heatmap_dir.glob("heatmap_pair_*.png")) if heatmap_dir.exists() else []
-        if heatmap_files:
-            for i in range(0, len(heatmap_files), 2):
-                batch = heatmap_files[i: i + 2]
-                _image_page(
-                    pdf,
-                    f"Section 5 — Change Heatmaps ({i + 1}–{i + len(batch)})",
-                    batch,
-                )
-        else:
-            print("  [skip] heatmap PNGs not found — run save_change_heatmaps.py first")
-
-        # Page 8 — Spatial leakage
+        # Prepare all images for grouping (up to 4 per page to save space)
+        class_dist_img = runs_dir / "data_profile" / "class_distribution.png"
         leakage_img = runs_dir / "spatial_leakage" / "split_comparison_f1.png"
-        leakage_md = runs_dir / "spatial_leakage" / "spatial_leakage_writeup.md"
-        if leakage_img.exists():
-            _image_page(
-                pdf,
-                "Section 6 — Spatial Leakage Experiment",
-                [leakage_img],
-                ["Per-class F1: block split vs random split"],
-            )
-        else:
-            print("  [skip] split_comparison_f1.png not found — run spatial_leakage_experiment.py first")
-
-        # Spatial leakage write-up as text
-        if leakage_md.exists():
-            body = leakage_md.read_text()[:2500]
-            _text_page(pdf, "Section 6 — Spatial Leakage Write-up", body)
-
-        # Page 9 — Error analysis
+        cm_img = runs_dir / "resnet18" / "eurosat_eval" / "confusion_matrix.png"
+        cm_ucm = runs_dir / "resnet18" / "uc_merced_eval" / "confusion_matrix.png"
+        
         error_grid = runs_dir / "resnet18" / "error_analysis" / "top_misclassifications_grid.png"
         pair_chart = runs_dir / "resnet18" / "error_analysis" / "confusion_pair_chart.png"
-        _image_page(
-            pdf,
-            "Section 7 — Error Analysis",
-            [img for img in [error_grid, pair_chart] if img.exists()],
-        )
+        roc_img = runs_dir / "change_detection" / "roc_curve.png"
+        
+        heatmap_dir = runs_dir / "change_detection" / "heatmaps"
+        heatmap_files = sorted(heatmap_dir.glob("heatmap_pair_*.png")) if heatmap_dir.exists() else []
 
-        # Page 10 — Conclusions
+        # Page 4 — Image Group 1
+        group_1_imgs = [class_dist_img, leakage_img, cm_img, cm_ucm]
+        group_1_caps = ["EuroSAT Class Dist", "Leakage F1", "CM EuroSAT", "CM UC Merced"]
+        _image_page(pdf, "Section 4 — Distributions & Confusion Matrices", group_1_imgs, group_1_caps)
+
+        # Page 5 — Image Group 2
+        group_2_imgs = [error_grid, pair_chart, roc_img]
+        group_2_caps = ["Top Errors", "Error Pairs", "Change ROC Curve"]
+        if len(heatmap_files) > 0:
+            group_2_imgs.append(heatmap_files[0])
+            group_2_caps.append("Change Heatmap 1")
+        _image_page(pdf, "Section 5 — Error Analysis & Change Detection", group_2_imgs, group_2_caps)
+
+        # Page 6 — Image Group 3 (Heatmaps)
+        if len(heatmap_files) > 1:
+            group_3_imgs = heatmap_files[1:5]
+            group_3_caps = [f"Change Heatmap {i+2}" for i in range(len(group_3_imgs))]
+            _image_page(pdf, "Section 6 — Temporal Change Heatmaps", group_3_imgs, group_3_caps)
+
+        # Page 7 — Spatial leakage text
+        leakage_md = runs_dir / "spatial_leakage" / "spatial_leakage_writeup.md"
+        if leakage_md.exists():
+            body = leakage_md.read_text()[:2500]
+            _text_page(pdf, "Section 7 — Spatial Leakage Write-up", body)
+
+        # Page 8 — Conclusions
         _conclusions_page(pdf, runs_dir)
 
         d = pdf.infodict()
