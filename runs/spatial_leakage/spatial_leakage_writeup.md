@@ -10,10 +10,14 @@ features.  This is called **spatial leakage**.
 
 We compare two split strategies on the EuroSAT dataset:
 
-| Strategy | Description |
-|---|---|
-| **Block split** | Tiles are grouped by a SHA-1 hash of their filename into 20 spatial blocks.  Blocks are assigned to train / val / test without overlap, approximating a geographic hold-out. |
-| **Random split** | Tiles are shuffled with a fixed seed and split 70 / 15 / 15.  Adjacent tiles can appear in train AND test. |
+* Block split: 
+  Tiles are grouped by a SHA-1 hash of their filename into 20 spatial blocks. 
+  Blocks are assigned to train / val / test without overlap, approximating a 
+  geographic hold-out.
+
+* Random split: 
+  Tiles are shuffled with a fixed seed and split 70 / 15 / 15. 
+  Adjacent tiles can appear in train AND test.
 
 ## Results
 

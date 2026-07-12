@@ -170,8 +170,8 @@ Run with: `jupyter notebook notebooks/`
 |---|---|---|
 | **B — Multi-threshold toggle** | ✅ Implemented | `configs/thresholds.json` defines `high_recall`, `balanced`, `high_precision` thresholds. The Streamlit dashboard sidebar lets you switch between them at runtime. |
 | **C — Embedding visualisation (t-SNE)** | ✅ In notebook | See `notebooks/02_results_and_analysis.ipynb` → Section 8 for t-SNE projection of 27k EuroSAT embeddings coloured by class. |
-| **A — GradCAM** | — | Not implemented |
-| **D — Imbalance experiment** | — | Not implemented |
+| **A — GradCAM** | ✅ Implemented | Script `scripts/bonus_a_gradcam.py` generates heatmaps for predictions. |
+| **D — Imbalance experiment** | ✅ Implemented | `scripts/bonus_d_imbalance.py` downsamples 2 classes to 20% and applies weighted-loss mitigation. Analysis is at `runs/imbalance_experiment/analysis.md`. |
 
 ---
 

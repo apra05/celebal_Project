@@ -45,8 +45,7 @@ def _text_page(pdf: PdfPages, title: str, body: str) -> None:
     """Render a text-only page."""
     fig = plt.figure(figsize=(8.5, 11))
     fig.text(0.5, 0.95, title, ha="center", va="top", fontsize=16, fontweight="bold")
-    wrapped = textwrap.fill(body, width=90)
-    fig.text(0.08, 0.88, wrapped, ha="left", va="top", fontsize=9, family="monospace", wrap=True)
+    fig.text(0.08, 0.88, body, ha="left", va="top", fontsize=9, family="monospace", wrap=True)
     pdf.savefig(fig)
     plt.close(fig)
 
