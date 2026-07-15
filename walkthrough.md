@@ -23,10 +23,12 @@ We have successfully addressed all identified requirements gaps, set up datasets
 ## Verification Results
 
 ### 🧪 Automated Tests
-Running `pytest tests/` successfully passes all three smoke tests:
-* `test_models_forward` (ScratchCNN and ResNet-18 forward pass shapes)
-* `test_change_helpers` (Cosine similarity and change heatmap shapes)
-* `test_save_region_heatmaps` (Synthetic heatmap generator output check)
+Running `pytest tests/ -v` successfully passes 15 tests across the new comprehensive test suite covering:
+* `test_data.py` (Transformations, dataset loader, and splits)
+* `test_metrics.py` (Classification reports and confusion matrices)
+* `test_change.py` (Embeddings, cosine similarity, ROC calculations, and heatmaps)
+* `test_dashboard.py` (Streamlit utilities and preprocessing)
+* `test_smoke.py` (Basic model forward passes and helpers)
 
 ### 📈 Training & Validation Metrics
 * **Baseline CNN** (3 epochs):
