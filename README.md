@@ -6,16 +6,48 @@ an embedding-based temporal change detector, and a local Streamlit dashboard.
 
 ## Project Structure
 
-```
+```text
 project_1/
 ├── src/landuse/          — reusable training, model, metric & change-detection code
 ├── scripts/              — runnable workflows (see below)
 ├── app/streamlit_app.py  — local dashboard for before/after tile comparison
 ├── notebooks/            — reproducible exploration & results notebooks
 ├── configs/thresholds.json — operating points (high_recall / balanced / high_precision)
-├── tests/                — smoke tests
+├── tests/                — smoke tests & comprehensive unit tests
 ├── reports/              — generated PDF report (after running generate_report.py)
 └── runs/                 — all output artefacts (checkpoints, metrics, plots)
+```
+
+## Architecture Diagram
+
+```mermaid
+graph TD
+    subgraph Data Pipeline
+        A1[EuroSAT RGB] --> B1(Data Transformations)
+        A2[UC Merced] --> B1
+        B1 --> C1{Block/Random Split}
+    end
+
+    subgraph Training & Modeling
+        C1 --> D1[ResNet-18 Backbone]
+        D1 --> E1(Phase 1: Frozen Training)
+        E1 --> E2(Phase 2: Fine-Tuning)
+        E2 --> F1((Best Checkpoint))
+    end
+
+    subgraph Inference & Change Detection
+        F1 --> G1[Image Classifier]
+        F1 --> G2[Embedding Extractor]
+        G2 --> H1(Cosine Similarity)
+        H1 --> I1{Threshold Decision}
+        I1 -->|Changed| J1(Pixel Heatmap)
+    end
+
+    subgraph Dashboard
+        G1 -.-> K1[Streamlit UI]
+        I1 -.-> K1
+        J1 -.-> K1
+    end
 ```
 
 ## Expected Data Layout
