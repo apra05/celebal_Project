@@ -45,6 +45,12 @@ data/
 - EuroSAT RGB: https://zenodo.org/record/7711810
 - UC Merced Land Use: http://vision.ucmerced.edu/datasets/landuse.html
 
+**Automated Download**
+You can automatically download and extract both datasets by running:
+```bash
+python scripts/download_datasets.py
+```
+
 ## Setup
 
 ```bash
