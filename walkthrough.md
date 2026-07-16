@@ -58,6 +58,6 @@ Compiled successfully into [`reports/project_report.pdf`](file:///Users/admin/De
 ---
 
 ## 📹 Interactive Demo
-The running dashboard was automated and verified by our browser agent:
+The running dashboard was manually recorded to demonstrate all functionality:
 
-![Dashboard WebP Demo](demo/dashboard_demo.webp)
+![Dashboard Demo Video](demo/dashboard_demo.mp4)
