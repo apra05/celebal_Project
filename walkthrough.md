@@ -60,4 +60,6 @@ Compiled successfully into [`reports/project_report.pdf`](file:///Users/admin/De
 ## 📹 Interactive Demo
 The running dashboard was manually recorded to demonstrate all functionality:
 
-<video src="https://github.com/apra05/celebal_Project/raw/main/demo%20video/dashboard_demo.mp4" controls="controls" style="max-width: 100%;"></video>
+https://github.com/apra05/celebal_Project/raw/main/demo%20video/dashboard_demo.mp4
+
+*(If the video does not automatically play above, [click here to download and view the 8MB MP4 file](https://github.com/apra05/celebal_Project/raw/main/demo%20video/dashboard_demo.mp4))*
