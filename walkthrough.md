@@ -60,4 +60,4 @@ Compiled successfully into [`reports/project_report.pdf`](file:///Users/admin/De
 ## 📹 Interactive Demo
 The running dashboard was automated and verified by our browser agent:
 
-![Dashboard WebP Demo](/Users/admin/.gemini/antigravity-ide/brain/4c72054a-507a-42fa-919f-91f7369d6fb4/streamlit_dashboard_demo_1783825856107.webp)
+![Dashboard WebP Demo](demo/dashboard_demo.webp)
