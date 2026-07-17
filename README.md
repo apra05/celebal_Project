@@ -6,11 +6,9 @@ an embedding-based temporal change detector, and a local Streamlit dashboard.
 
 ## 🎬 Demo Video
 
-https://github.com/user-attachments/assets/demo_video/Dashboard_Demo.mp4
+![Dashboard Demo](demo_video/Dashboard_Demo_Real_Images.webp)
 
-<video src="demo_video/Dashboard_Demo.mp4" controls width="100%"></video>
-
-> **Note:** If the video doesn't auto-embed above, you can [download and watch it here](demo_video/Dashboard_Demo.mp4).
+> **Note:** If the demo doesn't display above, you can [download and watch it here](demo_video/Dashboard_Demo_Real_Images.webp).
 
 ## Project Structure
 
