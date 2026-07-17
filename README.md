@@ -4,6 +4,14 @@
 This repo implements the project brief: a transfer-learning land-use classifier,
 an embedding-based temporal change detector, and a local Streamlit dashboard.
 
+## 🎬 Demo Video
+
+https://github.com/user-attachments/assets/demo_video/Dashboard_Demo.mp4
+
+<video src="demo_video/Dashboard_Demo.mp4" controls width="100%"></video>
+
+> **Note:** If the video doesn't auto-embed above, you can [download and watch it here](demo_video/Dashboard_Demo.mp4).
+
 ## Project Structure
 
 ```text
